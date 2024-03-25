@@ -1,6 +1,3 @@
-// Assuming you are styling a <div> with a class of `.background` for the background
-// and another <div> inside it with a class of `.shadowLayer` for the shadow overlay.
-
 .background {
   position: relative;
   width: 100vw;
@@ -8,18 +5,12 @@
   background: url("../assets/pictures/hero.jpeg") no-repeat center center;
   background-size: cover;
 
-  // The shadow layer
   .shadowLayer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(
-      0,
-      0,
-      0,
-      0.5
-    ); // Adjust the alpha value to control shadow darkness
+    background: rgba(0, 0, 0, 0.5);
   }
 }

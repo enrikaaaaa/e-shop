@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap");
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuIcon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu li {
+  margin-left: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: rgba(122, 64, 7, 1);
+  font-weight: bold;
+}
+* {
+  font-family: "Wix Madefor Text", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.buttonLogOut {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 0.5px 0.5px 150px #252525;
+}
+
+.buttonLogOut::after {
+  content: "Bye Bye";
+  height: 50px;
+  width: 150px;
+  background-color: rgba(122, 64, 7, 1);
+  color: black;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(50px);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.buttonLogOut::before {
+  content: "Log Out";
+  height: 50px;
+  width: 150px;
+  background-color: #fff;
+  color: rgba(122, 64, 7, 1);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(0px) scale(1.2);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.buttonLogOut:hover::after {
+  transform: translateY(0) scale(1.2);
+}
+
+.buttonLogOut:hover::before {
+  transform: translateY(-50px) scale(0) rotate(120deg);
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #f9f9f9;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menuIcon {
+    display: block;
+  }
+
+  .menuLine {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+  }
+  .buttonLogOut {
+    border-radius: 5rem;
+    justify-self: right;
+  }
+  .buttonLogOut::after {
+    content: "Bye";
+  }
+}
