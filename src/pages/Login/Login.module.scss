@@ -46,6 +46,9 @@
   display: block;
   width: 100%;
   background-color: rgba(122, 64, 7, 0.4);
+  &:hover {
+    background-color: rgba(86, 45, 5, 0.7);
+  }
 }
 
 input::-webkit-input-placeholder {
@@ -64,4 +67,10 @@ input::-webkit-input-placeholder {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
+}
+.error {
+  color: red;
+  font-size: 12px;
+  padding-bottom: 10px;
+  text-align: center;
 }
