@@ -1,0 +1,59 @@
+.order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.info {
+  margin-bottom: 10px;
+}
+.info ul li {
+  margin-bottom: 10px;
+}
+.info span {
+  margin: 10px;
+}
+
+.icon {
+  color: #964b00;
+  font-size: 20px;
+}
+
+.orderItemsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.orderItem span {
+  margin-left: 10px;
+  color: #333;
+  font-size: 16px;
+}
+
+.orderItem .icon {
+  color: #964b00;
+  font-size: 20px;
+}
+.order {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.info {
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin-right: 5px;
+}

@@ -1,0 +1,61 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "a title",
+      "price": 100,
+      "image": "http://www.google.com"
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "price": 200,
+      "image": "http://www.google.com"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "peopleId": "1",
+      "productTitle": "a comment about post 1",
+      "productId": "1",
+      "productImage": "http://www.google.com",
+      "productQuantity": 2,
+      "productPrice": 100,
+      "createDate": "2019-01-01"
+    },
+    {
+      "id": "2",
+      "peopleId": "2",
+      "text": "another comment about post 2",
+      "productId": "1",
+      "productImage": "http://www.google.com",
+      "productQuantity": 1,
+      "productPrice": 100,
+      "createDate": "2024-01-01"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Jonas",
+      "age": 25,
+      "username": "vienas",
+      "password": "hash"
+    },
+    {
+      "id": "2",
+      "name": "Petras",
+      "age": 30,
+      "username": "du",
+      "password": "hash"
+    },
+    {
+      "id": "3",
+      "name": "Doe",
+      "age": 35,
+      "username": "trys",
+      "password": "hash"
+    }
+  ]
+}

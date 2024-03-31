@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Button from "../Button/Button";
 import styles from "./NavigationBar.module.scss";
+import { navigationBarLinks } from "../../routes/consts";
 
 const NavigationBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,12 +22,14 @@ const NavigationBar = () => {
         <ul
           className={showMenu ? `${styles.menu} ${styles.show}` : styles.menu}
         >
-          <li>
-            <Link to="/orders">Orders</Link>
-          </li>
-          <li>
-            <Link to="/hotels">Hotels</Link>
-          </li>
+          <div className={styles.logo}>
+            <img src="../../src/assets/pictures/logo.png" alt="Logo" />
+          </div>
+          {navigationBarLinks.map((link) => (
+            <Link key={link.path} to={link.path}>
+              {link.title}
+            </Link>
+          ))}
         </ul>
         <div>
           <Button className={styles.buttonLogOut}></Button>

@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 3px dashed black;
 }
 
 .menuIcon {
@@ -17,7 +18,7 @@
   align-items: center;
 }
 
-.menu li {
+.menu a {
   margin-left: 20px;
 }
 
@@ -89,6 +90,10 @@
 .buttonLogOut:hover::before {
   transform: translateY(-50px) scale(0) rotate(120deg);
 }
+.logo img {
+  width: 70px;
+  height: 50px;
+}
 
 @media (max-width: 768px) {
   .menu {
@@ -125,5 +130,8 @@
   }
   .buttonLogOut::after {
     content: "Bye";
+  }
+  .logo img {
+    display: none;
   }
 }
