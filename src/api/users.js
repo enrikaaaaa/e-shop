@@ -18,3 +18,13 @@ export const createUser = async (newUser) => {
     throw error;
   }
 };
+
+export const fetchUserById = async (id) => {
+  try {
+    const response = await axios.get(`http://localhost:8000/users/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching order:", error);
+    throw error;
+  }
+};

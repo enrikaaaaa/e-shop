@@ -28,3 +28,12 @@ export const fetchOrderById = async (id) => {
     throw error;
   }
 };
+
+export const deleteOrder = async (id) => {
+  try {
+    await axios.delete(`http://localhost:8000/orders/${id}`);
+  } catch (error) {
+    console.error("Error deleting order:", error);
+    throw error;
+  }
+};

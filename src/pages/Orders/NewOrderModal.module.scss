@@ -1,0 +1,48 @@
+.selectContainer {
+  margin-bottom: 20px;
+}
+
+.selectContainer label {
+  margin-right: 10px;
+}
+
+.selectContainer select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+option {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 0 auto;
+  background-color: green;
+}
+
+.productInputContainer {
+  margin-bottom: 10px;
+}
+
+.productInputContainer input {
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.productInputContainer button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.productInputContainer button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

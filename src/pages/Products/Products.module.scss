@@ -1,0 +1,107 @@
+.orderRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &Item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    & span {
+      margin-left: 10px;
+      color: #333;
+      font-size: 16px;
+    }
+
+    & .icon {
+      color: #964b00;
+      font-size: 20px;
+    }
+  }
+}
+
+.columnHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.columnHeader {
+  flex: 1;
+  text-align: center;
+}
+
+.ordersContainer {
+  padding-top: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.columnItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px 20px;
+
+  & span {
+    margin-left: 10px;
+    color: #333;
+    font-size: 16px;
+    flex: 1;
+    text-align: center;
+  }
+
+  & .icon {
+    color: #964b00;
+    font-size: 20px;
+  }
+  button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}
+h2 {
+  margin-bottom: 20px;
+}
+label {
+  margin-right: 10px;
+  width: 100%;
+}
+.newProductButton {
+  margin: 20px;
+}

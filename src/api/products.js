@@ -21,3 +21,25 @@ export const createProduct = async (newProduct) => {
     throw error;
   }
 };
+
+export const deleteProduct = async (id) => {
+  try {
+    await axios.delete(`http://localhost:8000/products/${id}`);
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    throw error;
+  }
+};
+
+export const updateProduct = async (id, updatedProduct) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/products/${id}`,
+      updatedProduct
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error updating product:", error);
+    throw error;
+  }
+};

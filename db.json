@@ -1,14 +1,8 @@
 {
   "products": [
     {
-      "id": "1",
-      "title": "a title",
-      "price": 100,
-      "image": "http://www.google.com"
-    },
-    {
       "id": "2",
-      "title": "another title",
+      "name": "Duona",
       "price": 200,
       "image": "http://www.google.com"
     }
@@ -18,21 +12,65 @@
       "id": "1",
       "peopleId": "1",
       "productTitle": "a comment about post 1",
-      "productId": "1",
       "productImage": "http://www.google.com",
       "productQuantity": 2,
-      "productPrice": 100,
-      "createDate": "2019-01-01"
+      "totalPrice": 100,
+      "createDate": "2019-01-01",
+      "products": [
+        {
+          "id": "1",
+          "title": "a title",
+          "price": 100,
+          "image": "http://www.google.com",
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "title": "another title",
+          "price": 200,
+          "image": "http://www.google.com",
+          "quantity": 5
+        }
+      ]
     },
     {
-      "id": "2",
+      "id": "be45",
+      "products": [
+        {
+          "0": "w",
+          "1": "r",
+          "2": "s",
+          "3": "g",
+          "4": "t",
+          "5": "e",
+          "6": "d",
+          "7": "g",
+          "8": "t",
+          "productPrice": "60",
+          "productQuantity": "2"
+        }
+      ],
+      "createDate": "2024-04-01",
+      "totalPrice": 120,
       "peopleId": "2",
-      "text": "another comment about post 2",
-      "productId": "1",
-      "productImage": "http://www.google.com",
-      "productQuantity": 1,
-      "productPrice": 100,
-      "createDate": "2024-01-01"
+      "peopleName": "Petras"
+    },
+    {
+      "id": "8612",
+      "products": [
+        {
+          "id": "2",
+          "name": "Duona",
+          "price": 200,
+          "image": "http://www.google.com",
+          "productQuantity": "5",
+          "productPrice": "3"
+        }
+      ],
+      "createDate": "2024-04-01",
+      "totalPrice": 15,
+      "peopleId": "2",
+      "peopleName": "Petras"
     }
   ],
   "users": [
