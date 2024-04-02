@@ -4,6 +4,7 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { ROUTES } from "../../routes/consts";
 import styles from "./Login.module.scss";
+import { fetchUsers } from "../../api/users";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setEmailError("");
@@ -33,13 +34,20 @@ const Login = () => {
       return;
     }
 
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long");
-      return;
+    try {
+      const users = await fetchUsers();
+      const user = users.find(
+        (user) => user.email === email && user.password === password
+      );
+      if (user) {
+        console.log("User logged in successfully:", email);
+        navigate(ROUTES.ORDERS);
+      } else {
+        console.error("User not found or invalid credentials");
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
     }
-
-    console.log("Login Attempt:", email, password);
-    navigate(ROUTES.ORDERS);
   };
 
   const isValidEmail = (email) => {

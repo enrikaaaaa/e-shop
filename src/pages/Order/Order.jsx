@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./Order.module.scss";
-import { IoPerson } from "react-icons/io5";
-import { FaDollarSign } from "react-icons/fa";
 import { fetchOrderById } from "../../api/orders";
 import { fetchUserById } from "../../api/users";
+import { FaDollarSign } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
+import { IoPerson } from "react-icons/io5";
+import styles from "./Order.module.scss";
 
 const Order = () => {
   const { id } = useParams();
@@ -17,11 +18,9 @@ const Order = () => {
     const fetchData = async () => {
       try {
         const orderData = await fetchOrderById(id);
-        setOrder(orderData);
-
         const userData = await fetchUserById(orderData.peopleId);
+        setOrder(orderData);
         setCustomerName(userData.name);
-
         setLoading(false);
       } catch (error) {
         console.error("Error fetching order:", error);
@@ -32,41 +31,55 @@ const Order = () => {
     fetchData();
   }, [id]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className={styles.order}>
-      <div className={styles.info}>
-        <IoPerson className={styles.icon} />
-        <span>Klientas: {customerName}</span>
+      <h1>Užsakymas</h1>
+      <div className={styles.infoBlock}>
+        <div className={styles.info}>
+          <div>
+            <IoPerson className={styles.icon} />
+            Klientas:
+          </div>
+          <div> {customerName}</div>
+        </div>
+        <div className={styles.info}>
+          <div>
+            <FaCalendarAlt className={styles.icon} /> Data:
+          </div>
+          <div>{order.createDate}</div>
+        </div>
+        <div className={styles.info}>
+          <div>
+            <FaDollarSign className={styles.icon} />
+            Viso kaina:
+          </div>
+          <div> {order.totalPrice}</div>
+        </div>
+        <div className={styles.info}>
+          <div>Užsakymo ID:</div> <div>{order.id}</div>
+        </div>
+        <div className={styles.info}>
+          <div>Užsakytos prekės:</div>
+        </div>
       </div>
-      <div className={styles.info}>
-        <span>Data: {order.createDate}</span>
-      </div>
-      <div className={styles.info}>
-        <FaDollarSign className={styles.icon} />
-        <span>Viso kaina: {order.totalPrice}</span>
-      </div>
-      <div className={styles.info}>
-        <span>Užsakymo ID: {order.id}</span>
-      </div>
-      <div className={styles.info}>
-        <span>Užsakytos prekės:</span>
-        <ul>
-          {order.products &&
-            order.products.map((product, index) => (
-              <li key={`${product.id}-${index}`}>
-                {product.title} - Kiekis: {product.quantity} - Kaina:{" "}
-                {product.price}
-              </li>
-            ))}
-        </ul>
+      <div className={styles.productsContainer}>
+        {order.products &&
+          order.products.map((product, index) => (
+            <div key={`${product.productId}-${index}`}>
+              <span className={styles.productTitle}>
+                {product.productTitle}
+              </span>
+              <span className={styles.product}>
+                - Kiekis: {product.productQuantity}
+              </span>
+              <span className={styles.product}>
+                - Kaina: {product.productPrice}
+              </span>
+            </div>
+          ))}
       </div>
     </div>
   );

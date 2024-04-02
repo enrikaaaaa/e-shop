@@ -67,6 +67,33 @@
       "totalPrice": 10,
       "peopleId": "2",
       "peopleName": "Petras"
+    },
+    {
+      "id": "3680",
+      "products": [
+        {
+          "productId": "3304",
+          "productTitle": "Jogurtas",
+          "productQuantity": 5,
+          "productPrice": "10"
+        },
+        {
+          "productId": "2a35",
+          "productTitle": "grybai",
+          "productQuantity": 2,
+          "productPrice": "20"
+        },
+        {
+          "productId": "b92f",
+          "productTitle": "Siltnamis",
+          "productQuantity": 1,
+          "productPrice": "200"
+        }
+      ],
+      "createDate": "2024-04-02",
+      "totalPrice": 290,
+      "peopleId": "3",
+      "peopleName": "Doe"
     }
   ],
   "users": [
@@ -90,6 +117,11 @@
       "age": 35,
       "username": "trys",
       "password": "hash"
+    },
+    {
+      "id": "1810",
+      "email": "jonaspetrauskas@mail.lt",
+      "password": "asdfgh"
     }
   ]
 }

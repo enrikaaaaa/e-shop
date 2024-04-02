@@ -8,8 +8,8 @@ import NewOrder from "../pages/Orders/NewOrderModal";
 import Products from "../pages/Products/Products";
 
 export const ROUTES = {
-  LOGIN: "/",
-  REGISTER: "/register",
+  REGISTER: "/",
+  LOGIN: "/login",
   ORDERS: "/orders",
   ORDER: "/orders/:id",
   PRODUCTS: "/products",

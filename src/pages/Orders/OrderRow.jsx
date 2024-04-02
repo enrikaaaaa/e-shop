@@ -4,6 +4,7 @@ import { fetchUserById } from "../../api/users";
 import PropTypes from "prop-types";
 import { FaDollarSign } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
+import { FaCalendarAlt } from "react-icons/fa";
 import Button from "../../components/Button/Button";
 import styles from "./Orders.module.scss";
 
@@ -41,6 +42,7 @@ const OrderRow = ({ order, onEditOrder, onDeleteOrder }) => {
           <span>{customerName}</span>
         </div>
         <div className={styles.iconItem}>
+          <FaCalendarAlt className={styles.icon} />
           <span>{order.createDate}</span>
         </div>
         <div className={styles.iconItem}>
