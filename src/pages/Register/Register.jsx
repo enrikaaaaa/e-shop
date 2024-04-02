@@ -13,6 +13,8 @@ const Register = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -55,8 +57,7 @@ const Register = () => {
         return;
       }
 
-      await createUser({ email, password });
-      console.log("User registered successfully:", email);
+      await createUser({ name, age, email, password });
       navigate(ROUTES.LOGIN);
     } catch (error) {
       console.error("Error registering user:", error);
@@ -74,6 +75,31 @@ const Register = () => {
         <div className={styles.formTitle}>Register</div>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputContainer}>
+            <label htmlFor="name" className={styles.label}>
+              Name
+            </label>
+            <Input
+              type="text"
+              id="name"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={styles.fullWidth}
+              required
+            />
+            <label htmlFor="age" className={styles.label}>
+              Age
+            </label>
+            <Input
+              type="number"
+              id="age"
+              placeholder="Age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              className={styles.fullWidth}
+              required
+            />
+
             <label htmlFor="email" className={styles.label}>
               Email
             </label>
@@ -86,9 +112,9 @@ const Register = () => {
               className={styles.fullWidth}
               required
             />
-          </div>
-          {emailError && <div className={styles.error}>{emailError}</div>}
-          <div className={styles.inputContainer}>
+
+            {emailError && <div className={styles.error}>{emailError}</div>}
+
             <label htmlFor="password" className={styles.label}>
               Password
             </label>
@@ -101,9 +127,11 @@ const Register = () => {
               className={styles.fullWidth}
               required
             />
-          </div>
-          {passwordError && <div className={styles.error}>{passwordError}</div>}
-          <div className={styles.inputContainer}>
+
+            {passwordError && (
+              <div className={styles.error}>{passwordError}</div>
+            )}
+
             <label htmlFor="confirmPassword" className={styles.label}>
               Confirm Password
             </label>
@@ -116,17 +144,15 @@ const Register = () => {
               className={styles.fullWidth}
               required
             />
-          </div>
-          {confirmPasswordError && (
-            <div className={styles.error}>{confirmPasswordError}</div>
-          )}
-          <div className={styles.buttons}>
-            <div>
-              <Button type="submit" className={styles.registerButton}>
-                Register
-              </Button>
+            <div className={styles.buttons}>
+              <div>
+                <Button type="submit" className={styles.registerButton}>
+                  Register
+                </Button>
+              </div>
             </div>
-            <div>
+            <div className={`${styles.form} ${styles.registerContainer}`}>
+              <h5>Registered?</h5>
               <Button
                 className={styles.registerButton}
                 onClick={() => navigate(ROUTES.LOGIN)}
@@ -135,6 +161,9 @@ const Register = () => {
               </Button>
             </div>
           </div>
+          {confirmPasswordError && (
+            <div className={styles.error}>{confirmPasswordError}</div>
+          )}
         </form>
       </div>
     </div>

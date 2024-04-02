@@ -28,3 +28,23 @@ export const fetchUserById = async (id) => {
     throw error;
   }
 };
+export const deleteUser = async (id) => {
+  try {
+    await axios.delete(`http://localhost:8000/users/${id}`);
+  } catch (error) {
+    console.error("Error deleting order:", error);
+    throw error;
+  }
+};
+
+export const updateUser = async (userId, updatedData) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/users/${userId}`,
+      updatedData
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to update order: " + error.message);
+  }
+};

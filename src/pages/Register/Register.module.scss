@@ -63,23 +63,38 @@
 
 .buttons {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
-  padding-bottom: 10px;
-  text-align: center;
+.buttons div {
+  width: 100%;
+  margin-top: 10px;
 }
 
-.label {
-  display: block;
-  text-align: left;
-  margin-bottom: 5px;
-  position: relative;
-  z-index: 3;
+.registerButton {
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
 }
-.background .shadowLayer {
-  position: relative;
+
+.registerButton:hover {
+  background-color: darkgreen;
+}
+.registerContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
 }

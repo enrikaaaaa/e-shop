@@ -33,55 +33,28 @@
   ],
   "orders": [
     {
-      "id": "ae4f",
+      "id": "6ead",
       "products": [
         {
-          "productId": "2f5f",
-          "productTitle": "rozes",
-          "productQuantity": 9,
-          "productPrice": "3"
-        },
-        {
-          "productId": "3304",
-          "productTitle": "Jogurtas",
-          "productQuantity": 1,
-          "productPrice": "10"
+          "productId": "b92f",
+          "productTitle": "Siltnamis",
+          "productQuantity": "1",
+          "productPrice": "200"
         }
       ],
       "createDate": "2024-04-02",
-      "totalPrice": 37,
-      "peopleId": "1",
-      "peopleName": "Jonas"
+      "totalPrice": 200,
+      "peopleId": "e8b0",
+      "peopleName": "Enrika"
     },
     {
-      "id": "32e5",
+      "id": "0d2a",
       "products": [
         {
           "productId": "cbc4",
           "productTitle": "Duona",
-          "productQuantity": "1",
-          "productPrice": "10"
-        }
-      ],
-      "createDate": "2024-04-02",
-      "totalPrice": 10,
-      "peopleId": "2",
-      "peopleName": "Petras"
-    },
-    {
-      "id": "3680",
-      "products": [
-        {
-          "productId": "3304",
-          "productTitle": "Jogurtas",
           "productQuantity": 5,
           "productPrice": "10"
-        },
-        {
-          "productId": "2a35",
-          "productTitle": "grybai",
-          "productQuantity": 2,
-          "productPrice": "20"
         },
         {
           "productId": "b92f",
@@ -90,37 +63,25 @@
           "productPrice": "200"
         }
       ],
-      "createDate": "2024-04-02",
-      "totalPrice": 290,
-      "peopleId": "3",
-      "peopleName": "Doe"
+      "createDate": "2024-04-03",
+      "totalPrice": 250,
+      "peopleId": "86e7",
+      "peopleName": "Bronde"
     }
   ],
   "users": [
     {
-      "id": "1",
-      "name": "Jonas",
-      "age": 25,
-      "username": "vienas",
-      "password": "hash"
+      "id": "e8b0",
+      "name": "Enrika",
+      "age": "32",
+      "email": "e.rudzikiene@gmail.com",
+      "password": "Naujas.123"
     },
     {
-      "id": "2",
-      "name": "Petras",
-      "age": 30,
-      "username": "du",
-      "password": "hash"
-    },
-    {
-      "id": "3",
-      "name": "Doe",
-      "age": 35,
-      "username": "trys",
-      "password": "hash"
-    },
-    {
-      "id": "1810",
-      "email": "jonaspetrauskas@mail.lt",
+      "id": "86e7",
+      "name": "Bronde",
+      "age": "33",
+      "email": "bronde@mail.com",
       "password": "asdfgh"
     }
   ]

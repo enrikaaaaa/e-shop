@@ -6,6 +6,7 @@ import BasicLayout from "../layouts/BasicLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import NewOrder from "../pages/Orders/NewOrderModal";
 import Products from "../pages/Products/Products";
+import Users from "../pages/Users/Users";
 
 export const ROUTES = {
   REGISTER: "/",
@@ -14,6 +15,7 @@ export const ROUTES = {
   ORDER: "/orders/:id",
   PRODUCTS: "/products",
   NEWORDER: "/new-order",
+  USERS: "/users",
 };
 
 export const routes = [
@@ -47,6 +49,11 @@ export const routes = [
     Component: Products,
     Layout: BasicLayout,
   },
+  {
+    path: ROUTES.USERS,
+    Component: Users,
+    Layout: BasicLayout,
+  },
 ];
 
 export const navigationBarLinks = [
@@ -57,5 +64,9 @@ export const navigationBarLinks = [
   {
     title: "Products",
     path: ROUTES.PRODUCTS,
+  },
+  {
+    title: "Users",
+    path: ROUTES.USERS,
   },
 ];
