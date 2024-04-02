@@ -1,5 +1,4 @@
-// NewOrderModal.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Modal from "../../components/Modal/Modal";
 import Button from "../../components/Button/Button";
 import PropTypes from "prop-types";
@@ -57,23 +56,19 @@ const NewOrderModal = ({ isOpen, onClose, onSubmit, initialData }) => {
         id: initialData.peopleId,
         name: initialData.peopleName,
       });
-      setFormData({
-        ...formData,
+      setFormData((prevData) => ({
+        ...prevData,
         products: initialData.products.map((product) => ({
           productId: product.productId,
           productTitle: product.productTitle,
           productQuantity: product.productQuantity,
           productPrice: product.productPrice,
         })),
-      });
+      }));
     }
-  }, [initialData]);
+  }, [initialData, formData]);
 
-  useEffect(() => {
-    calculateTotalPrice();
-  }, [formData.products]);
-
-  const calculateTotalPrice = () => {
+  const calculateTotalPrice = useCallback(() => {
     const totalPrice = formData.products.reduce(
       (total, product) =>
         total + product.productPrice * product.productQuantity,
@@ -83,7 +78,11 @@ const NewOrderModal = ({ isOpen, onClose, onSubmit, initialData }) => {
       ...prevData,
       totalPrice,
     }));
-  };
+  }, [formData.products]);
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [formData.products, calculateTotalPrice]);
 
   const handleChange = (value, index) => {
     const product = productList.find((p) => p.id === value.id);
@@ -147,14 +146,12 @@ const NewOrderModal = ({ isOpen, onClose, onSubmit, initialData }) => {
 
     try {
       if (initialData) {
-        // Update existing order
         const updatedOrder = await updateOrder(
           initialData.orderId,
           updatedFormData
         );
         onSubmit(updatedOrder);
       } else {
-        // Create new order
         const newOrder = await createOrder(updatedFormData);
         onSubmit(newOrder);
       }

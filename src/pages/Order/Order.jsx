@@ -11,6 +11,7 @@ const Order = () => {
   const [order, setOrder] = useState(null);
   const [customerName, setCustomerName] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +24,8 @@ const Order = () => {
 
         setLoading(false);
       } catch (error) {
-        console.error("Klaida gaunant užsakymą:", error);
+        console.error("Error fetching order:", error);
+        setError(error.message);
         setLoading(false);
       }
     };
@@ -31,7 +33,11 @@ const Order = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Kraunama...</div>;
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   return (

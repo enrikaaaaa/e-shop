@@ -23,76 +23,38 @@
       "name": "grybai",
       "price": "20",
       "image": "https://i1.wp.com/nyksciai.lt/wp-content/uploads/2023/10/jo.jpg?resize=525%2C500&ssl=1"
+    },
+    {
+      "id": "2f5f",
+      "name": "rozes",
+      "price": "3",
+      "image": "https://gelesmanufaktura.lt/wp-content/uploads/2018/01/RDF_7607-ro%C5%BE%C4%97s.jpg"
     }
   ],
   "orders": [
     {
-      "id": "8612",
+      "id": "ae4f",
       "products": [
         {
-          "id": "2",
-          "name": "Duona",
-          "price": 200,
-          "image": "http://www.google.com",
-          "productQuantity": "5",
+          "productId": "2f5f",
+          "productTitle": "rozes",
+          "productQuantity": 9,
           "productPrice": "3"
-        }
-      ],
-      "createDate": "2024-04-01",
-      "totalPrice": 15,
-      "peopleId": "2",
-      "peopleName": "Petras"
-    },
-    {
-      "id": "97dc",
-      "products": [
-        {
-          "productId": "cbc4",
-          "productTitle": "Duona",
-          "productQuantity": 1,
-          "productPrice": "10"
         },
         {
           "productId": "3304",
           "productTitle": "Jogurtas",
           "productQuantity": 1,
           "productPrice": "10"
-        },
-        {
-          "productId": "b92f",
-          "productTitle": "Siltnamis",
-          "productQuantity": 1,
-          "productPrice": "200"
         }
       ],
       "createDate": "2024-04-02",
-      "totalPrice": 220,
+      "totalPrice": 37,
       "peopleId": "1",
       "peopleName": "Jonas"
     },
     {
-      "id": "7822",
-      "products": [
-        {
-          "productId": "cbc4",
-          "productTitle": "Duona",
-          "productQuantity": "1",
-          "productPrice": "10"
-        },
-        {
-          "productId": "b92f",
-          "productTitle": "Siltnamis",
-          "productQuantity": 3,
-          "productPrice": "200"
-        }
-      ],
-      "createDate": "2024-04-02",
-      "totalPrice": 610,
-      "peopleId": "1",
-      "peopleName": "Jonas"
-    },
-    {
-      "id": "0a75",
+      "id": "32e5",
       "products": [
         {
           "productId": "cbc4",
@@ -103,8 +65,8 @@
       ],
       "createDate": "2024-04-02",
       "totalPrice": 10,
-      "peopleId": "3",
-      "peopleName": "Doe"
+      "peopleId": "2",
+      "peopleName": "Petras"
     }
   ],
   "users": [

@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { fetchOrders, deleteOrder } from "../../api/orders";
 import { fetchUsers } from "../../api/users";
-import OrderRow from "./OrderRow";
+import OrderRow from "../Orders/OrderRow";
+import Order from "../Order/Order";
 import styles from "./Orders.module.scss";
 import Button from "../../components/Button/Button";
-import NewOrderModal from "./NewOrderModal"; // Update import path
+import NewOrderModal from "./NewOrderModal";
+import { Link } from "react-router-dom";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [users, setUsers] = useState([]);
-  const [, setSelectedOrder] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [initialData, setInitialData] = useState(null);
 
@@ -50,7 +52,7 @@ const Orders = () => {
   const handleEditOrder = (orderId) => {
     const orderToEdit = orders.find((order) => order.id === orderId);
     setInitialData(orderToEdit);
-    handleModalOpen(); // Open the modal after setting initial data
+    handleModalOpen();
   };
 
   const handleDeleteOrder = async (orderId) => {
@@ -80,15 +82,18 @@ const Orders = () => {
         <div>Actions</div>
       </div>
       {orders.map((order) => (
-        <OrderRow
-          key={order.id}
-          order={{ ...order, peopleId: order.peopleId.toString() }}
-          people={users.find((user) => user.id === order.peopleId)}
-          onOrderClick={handleOrderClick}
-          onEditOrder={handleEditOrder}
-          onDeleteOrder={handleDeleteOrder}
-        />
+        <Link to={`/orders/${order.id}`} key={order.id}>
+          <OrderRow
+            key={order.id}
+            order={{ ...order, peopleId: order.peopleId.toString() }}
+            people={users.find((user) => user.id === order.peopleId)}
+            onOrderClick={handleOrderClick}
+            onEditOrder={handleEditOrder}
+            onDeleteOrder={handleDeleteOrder}
+          />
+        </Link>
       ))}
+      {selectedOrder && <Order order={selectedOrder} />}
     </div>
   );
 };
