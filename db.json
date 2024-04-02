@@ -1,60 +1,31 @@
 {
   "products": [
     {
-      "id": "2",
+      "id": "cbc4",
       "name": "Duona",
-      "price": 200,
-      "image": "http://www.google.com"
+      "price": "10",
+      "image": "https://www.lamaistas.lt/uploads/modules/articles/thumb920x573/2018/02/kaip-iskepti-tradicine-bemiele-rugine-duona-pasakojame-apie-viska-nuo-raugo-iki-kepimo-44860.jpg"
+    },
+    {
+      "id": "3304",
+      "name": "Jogurtas",
+      "price": "10",
+      "image": "https://s1.15min.lt/images/photos/2017/06/13/original/15115832_l-593ff4caa73eb.jpg"
+    },
+    {
+      "id": "b92f",
+      "name": "Siltnamis",
+      "price": "200",
+      "image": "https://www.varle.lt/static/uploads/products/686/sil/siltnamis-antracito-spalvos-aliuminis_6vcrRVg.jpg"
+    },
+    {
+      "id": "2a35",
+      "name": "grybai",
+      "price": "20",
+      "image": "https://i1.wp.com/nyksciai.lt/wp-content/uploads/2023/10/jo.jpg?resize=525%2C500&ssl=1"
     }
   ],
   "orders": [
-    {
-      "id": "1",
-      "peopleId": "1",
-      "productTitle": "a comment about post 1",
-      "productImage": "http://www.google.com",
-      "productQuantity": 2,
-      "totalPrice": 100,
-      "createDate": "2019-01-01",
-      "products": [
-        {
-          "id": "1",
-          "title": "a title",
-          "price": 100,
-          "image": "http://www.google.com",
-          "quantity": 1
-        },
-        {
-          "id": "2",
-          "title": "another title",
-          "price": 200,
-          "image": "http://www.google.com",
-          "quantity": 5
-        }
-      ]
-    },
-    {
-      "id": "be45",
-      "products": [
-        {
-          "0": "w",
-          "1": "r",
-          "2": "s",
-          "3": "g",
-          "4": "t",
-          "5": "e",
-          "6": "d",
-          "7": "g",
-          "8": "t",
-          "productPrice": "60",
-          "productQuantity": "2"
-        }
-      ],
-      "createDate": "2024-04-01",
-      "totalPrice": 120,
-      "peopleId": "2",
-      "peopleName": "Petras"
-    },
     {
       "id": "8612",
       "products": [
@@ -71,6 +42,69 @@
       "totalPrice": 15,
       "peopleId": "2",
       "peopleName": "Petras"
+    },
+    {
+      "id": "97dc",
+      "products": [
+        {
+          "productId": "cbc4",
+          "productTitle": "Duona",
+          "productQuantity": 1,
+          "productPrice": "10"
+        },
+        {
+          "productId": "3304",
+          "productTitle": "Jogurtas",
+          "productQuantity": 1,
+          "productPrice": "10"
+        },
+        {
+          "productId": "b92f",
+          "productTitle": "Siltnamis",
+          "productQuantity": 1,
+          "productPrice": "200"
+        }
+      ],
+      "createDate": "2024-04-02",
+      "totalPrice": 220,
+      "peopleId": "1",
+      "peopleName": "Jonas"
+    },
+    {
+      "id": "7822",
+      "products": [
+        {
+          "productId": "cbc4",
+          "productTitle": "Duona",
+          "productQuantity": "1",
+          "productPrice": "10"
+        },
+        {
+          "productId": "b92f",
+          "productTitle": "Siltnamis",
+          "productQuantity": 3,
+          "productPrice": "200"
+        }
+      ],
+      "createDate": "2024-04-02",
+      "totalPrice": 610,
+      "peopleId": "1",
+      "peopleName": "Jonas"
+    },
+    {
+      "id": "0a75",
+      "products": [
+        {
+          "productId": "cbc4",
+          "productTitle": "Duona",
+          "productQuantity": "1",
+          "productPrice": "10"
+        }
+      ],
+      "createDate": "2024-04-02",
+      "totalPrice": 10,
+      "peopleId": "3",
+      "peopleName": "Doe"
     }
   ],
   "users": [

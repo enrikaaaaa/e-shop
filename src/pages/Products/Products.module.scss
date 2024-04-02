@@ -57,26 +57,23 @@
 .columnItem {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 10px;
   width: 100%;
   padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  text-decoration: none;
+  justify-content: space-around;
 
   & span {
-    margin-left: 10px;
     color: #333;
     font-size: 16px;
-    flex: 1;
-    text-align: center;
+    width: auto;
   }
 
-  & .icon {
-    color: #964b00;
-    font-size: 20px;
-  }
   button {
     padding: 8px 12px;
-    background-color: #007bff;
+    background-color: red;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -104,4 +101,13 @@ label {
 }
 .newProductButton {
   margin: 20px;
+}
+.columnItem img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.image {
+  width: 200px;
+  align-items: flex-end;
 }

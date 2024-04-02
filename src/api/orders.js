@@ -37,3 +37,14 @@ export const deleteOrder = async (id) => {
     throw error;
   }
 };
+export const updateOrder = async (orderId, updatedData) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/orders/${orderId}`,
+      updatedData
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to update order: " + error.message);
+  }
+};

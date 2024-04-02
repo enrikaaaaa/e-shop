@@ -83,12 +83,17 @@ const Products = () => {
         Add New Product
       </Button>
       <div className={styles.columnHeaderContainer}>
+        <div className={styles.columnHeader}>Image</div>
         <div className={styles.columnHeader}>Product Name</div>
         <div className={styles.columnHeader}>Price</div>
+        <div className={styles.columnHeader}>Actions</div>
       </div>
       {products.map((product) => (
         <div className={styles.productRow} key={product.id}>
           <div className={styles.columnItem}>
+            <span className={styles.image}>
+              <img src={product.image} alt={product.name} />
+            </span>
             <span>{product.name}</span>
             <span>{product.price}</span>
             <Button onClick={() => handleDelete(product.id)}>X</Button>
@@ -98,6 +103,16 @@ const Products = () => {
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <h2>Add New Product</h2>
         <form onSubmit={handleSubmit}>
+          <label>
+            Image URL:
+            <input
+              type="text"
+              name="image"
+              value={newProductData.image}
+              onChange={handleChange}
+              required
+            />
+          </label>
           <label>
             Product Name:
             <input

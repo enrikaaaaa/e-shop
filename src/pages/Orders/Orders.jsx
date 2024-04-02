@@ -4,14 +4,14 @@ import { fetchUsers } from "../../api/users";
 import OrderRow from "./OrderRow";
 import styles from "./Orders.module.scss";
 import Button from "../../components/Button/Button";
-import NewOrderModal from "../Orders/NewOrderModal";
+import NewOrderModal from "./NewOrderModal"; // Update import path
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [users, setUsers] = useState([]);
   const [, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editOrderId, setEditOrderId] = useState(null);
+  const [initialData, setInitialData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +39,7 @@ const Orders = () => {
 
   const handleModalClose = () => {
     setIsModalOpen(false);
-    setEditOrderId(null);
+    setInitialData(null);
   };
 
   const handleFormSubmit = () => {
@@ -48,15 +48,15 @@ const Orders = () => {
   };
 
   const handleEditOrder = (orderId) => {
-    setEditOrderId(orderId);
-    handleModalOpen();
+    const orderToEdit = orders.find((order) => order.id === orderId);
+    setInitialData(orderToEdit);
+    handleModalOpen(); // Open the modal after setting initial data
   };
 
   const handleDeleteOrder = async (orderId) => {
     try {
       await deleteOrder(orderId);
       setOrders(orders.filter((order) => order.id !== orderId));
-      console.log("Order deleted successfully:", orderId);
     } catch (error) {
       console.error("Error deleting order:", error);
     }
@@ -71,13 +71,13 @@ const Orders = () => {
         isOpen={isModalOpen}
         onClose={handleModalClose}
         onSubmit={handleFormSubmit}
-        initialData={orders.find((order) => order.id === editOrderId)}
+        initialData={initialData}
       />
       <div className={styles.columnHeaderContainer}>
-        <div>Klientas</div>
-        <div>Data</div>
-        <div>Viso kaina</div>
-        <div>Veiksmai</div>
+        <div>Customer</div>
+        <div>Date</div>
+        <div>Total Price</div>
+        <div>Actions</div>
       </div>
       {orders.map((order) => (
         <OrderRow

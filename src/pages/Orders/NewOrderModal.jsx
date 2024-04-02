@@ -1,82 +1,127 @@
+// NewOrderModal.jsx
 import { useState, useEffect } from "react";
 import Modal from "../../components/Modal/Modal";
 import Button from "../../components/Button/Button";
 import PropTypes from "prop-types";
-import { createOrder } from "../../api/orders";
+import { createOrder, updateOrder } from "../../api/orders";
 import { fetchUsers } from "../../api/users";
-import { fetchProducts } from "../../api/products"; // Import fetchProducts
+import { fetchProducts } from "../../api/products";
 import styles from "./NewOrderModal.module.scss";
 import Select from "react-select";
 
-const NewOrderModal = ({ isOpen, onClose, onSubmit }) => {
+const NewOrderModal = ({ isOpen, onClose, onSubmit, initialData }) => {
   const [formData, setFormData] = useState({
-    products: [{ productTitle: "", productQuantity: 1, productPrice: 0 }],
+    products: initialData
+      ? initialData.products.map((product) => ({
+          productId: product.productId,
+          productTitle: product.productTitle,
+          productQuantity: product.productQuantity,
+          productPrice: product.productPrice,
+        }))
+      : [
+          {
+            productId: "",
+            productTitle: "",
+            productQuantity: "1",
+            productPrice: 0,
+          },
+        ],
     createDate: "",
     totalPrice: 0,
     peopleId: "",
     peopleName: "",
   });
   const [customerList, setCustomerList] = useState([]);
-  const [productList, setProductList] = useState([]); // State for product options
+  const [productList, setProductList] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
 
   useEffect(() => {
-    const fetchCustomers = async () => {
+    const fetchData = async () => {
       try {
-        const users = await fetchUsers();
+        const [users, products] = await Promise.all([
+          fetchUsers(),
+          fetchProducts(),
+        ]);
         setCustomerList(users);
-      } catch (error) {
-        console.error("Error fetching customers:", error);
-      }
-    };
-
-    const fetchProductsData = async () => {
-      // Fetch products data
-      try {
-        const products = await fetchProducts();
         setProductList(products);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("Error fetching data:", error);
       }
     };
-
-    fetchCustomers();
-    fetchProductsData();
+    fetchData();
   }, []);
 
   useEffect(() => {
-    const calculateTotalPrice = () => {
-      const totalPrice = formData.products.reduce(
-        (total, product) =>
-          total + product.productPrice * product.productQuantity,
-        0
-      );
-      setFormData((prevData) => ({
-        ...prevData,
-        totalPrice,
-      }));
-    };
+    if (initialData) {
+      setSelectedCustomer({
+        id: initialData.peopleId,
+        name: initialData.peopleName,
+      });
+      setFormData({
+        ...formData,
+        products: initialData.products.map((product) => ({
+          productId: product.productId,
+          productTitle: product.productTitle,
+          productQuantity: product.productQuantity,
+          productPrice: product.productPrice,
+        })),
+      });
+    }
+  }, [initialData]);
 
+  useEffect(() => {
     calculateTotalPrice();
   }, [formData.products]);
 
-  const handleChange = (newValue, index) => {
+  const calculateTotalPrice = () => {
+    const totalPrice = formData.products.reduce(
+      (total, product) =>
+        total + product.productPrice * product.productQuantity,
+      0
+    );
+    setFormData((prevData) => ({
+      ...prevData,
+      totalPrice,
+    }));
+  };
+
+  const handleChange = (value, index) => {
+    const product = productList.find((p) => p.id === value.id);
+    if (!product) {
+      console.error(`Product not found for ID: ${value.id}`);
+      return;
+    }
+
     const updatedProducts = [...formData.products];
-    updatedProducts[index] = newValue;
+    updatedProducts[index] = {
+      ...updatedProducts[index],
+      productId: value.id,
+      productTitle: value.name,
+      productPrice: product.price,
+    };
     setFormData((prevData) => ({
       ...prevData,
       products: updatedProducts,
     }));
+
+    calculateTotalPrice();
   };
 
-  const handleAddProduct = () => {
+  const handleQuantityChange = (e, index) => {
+    const quantity = parseInt(e.target.value);
+    if (isNaN(quantity) || quantity < 1) return;
+
+    const updatedProducts = [...formData.products];
+    updatedProducts[index] = {
+      ...updatedProducts[index],
+      productQuantity: quantity,
+    };
     setFormData((prevData) => ({
       ...prevData,
-      products: [
-        ...prevData.products,
-        { productTitle: "", productQuantity: 1, productPrice: 0 },
-      ],
+      products: updatedProducts,
     }));
+
+    calculateTotalPrice();
   };
 
   const handleRemoveProduct = (index) => {
@@ -101,17 +146,42 @@ const NewOrderModal = ({ isOpen, onClose, onSubmit }) => {
     };
 
     try {
-      const newOrder = await createOrder(updatedFormData);
-      onSubmit(newOrder);
+      if (initialData) {
+        // Update existing order
+        const updatedOrder = await updateOrder(
+          initialData.orderId,
+          updatedFormData
+        );
+        onSubmit(updatedOrder);
+      } else {
+        // Create new order
+        const newOrder = await createOrder(updatedFormData);
+        onSubmit(newOrder);
+      }
       onClose();
     } catch (error) {
-      console.error("Error creating order:", error);
+      console.error("Error handling order:", error);
     }
+  };
+
+  const handleAddProduct = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      products: [
+        ...prevData.products,
+        {
+          productId: "",
+          productTitle: "",
+          productQuantity: "",
+          productPrice: 0,
+        },
+      ],
+    }));
   };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <h2>Add New Order</h2>
+      <h2>{initialData ? "Edit Order" : "Add New Order"}</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.selectContainer}>
           <label htmlFor="customerSelect">Select Customer:</label>
@@ -122,51 +192,40 @@ const NewOrderModal = ({ isOpen, onClose, onSubmit }) => {
             options={customerList}
             getOptionValue={(option) => option.id}
             getOptionLabel={(option) => option.name}
-            placeholder="Select Customer"
+            placeholder="Select customer"
+            required
           />
         </div>
         {formData.products.map((product, index) => (
           <div key={index} className={styles.productInputContainer}>
+            <div>Selected Product: {product.productTitle}</div>
             <Select
-              value={product}
+              value={productList.find((p) => p.productId === product.productId)}
               onChange={(value) => handleChange(value, index)}
               options={productList}
               getOptionValue={(option) => option.id}
               getOptionLabel={(option) => option.name}
-              placeholder="Select Product"
-            />
-            <input
-              type="number"
-              name="productQuantity"
-              placeholder="Quantity"
-              value={product.productQuantity}
-              onChange={(e) =>
-                handleChange(
-                  { ...product, productQuantity: e.target.value },
-                  index
-                )
-              }
+              placeholder="Select product"
               required
             />
-            <input
-              type="number"
-              name="productPrice"
-              placeholder="Price"
-              value={product.productPrice}
-              onChange={(e) =>
-                handleChange(
-                  { ...product, productPrice: e.target.value },
-                  index
-                )
-              }
-              required
-            />
+
+            <div>
+              Quantity:
+              <input
+                type="number"
+                value={product.productQuantity}
+                onChange={(e) => handleQuantityChange(e, index)}
+                min="1"
+                required
+              />
+            </div>
+
             <Button
               type="button"
               onClick={() => handleRemoveProduct(index)}
               disabled={formData.products.length === 1}
             >
-              x
+              Remove
             </Button>
           </div>
         ))}
@@ -174,16 +233,17 @@ const NewOrderModal = ({ isOpen, onClose, onSubmit }) => {
           Add Product
         </Button>
         <div>Total Price: ${formData.totalPrice.toFixed(2)}</div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">{initialData ? "Update" : "Submit"}</Button>
       </form>
     </Modal>
   );
 };
 
 NewOrderModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  onSubmit: PropTypes.func,
+  initialData: PropTypes.object,
 };
 
 export default NewOrderModal;
