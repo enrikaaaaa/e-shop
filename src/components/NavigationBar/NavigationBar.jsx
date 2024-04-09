@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { ROUTES, navigationBarLinks } from "../../routes/consts";
+import { useContext, useState } from "react";
+
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext/UserContext";
 import styles from "./NavigationBar.module.scss";
-import { navigationBarLinks } from "../../routes/consts";
 
 const NavigationBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { user, isLoggedIn } = useContext(UserContext);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -32,7 +35,10 @@ const NavigationBar = () => {
           ))}
         </ul>
         <div>
-          <Button className={styles.buttonLogOut}></Button>
+          <div>Hello, {isLoggedIn ? user.name : "Guest"}!</div>
+          <Link to={ROUTES.LOGIN}>
+            <Button className={styles.buttonLogOut}></Button>
+          </Link>
         </div>
       </nav>
     </header>

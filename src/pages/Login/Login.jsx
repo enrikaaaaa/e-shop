@@ -1,10 +1,12 @@
+import { useContext, useState } from "react";
+
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { ROUTES } from "../../routes/consts";
+import { UserContext } from "../../contexts/UserContext/UserContext";
 import { fetchUsers } from "../../api/users";
 import styles from "./Login.module.scss";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +14,7 @@ const Login = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
+  const { handleLogin } = useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,19 +43,36 @@ const Login = () => {
         (user) => user.email === email && user.password === password
       );
       if (user) {
-        console.log("User logged in successfully:", email);
         navigate(ROUTES.ORDERS);
       } else {
-        console.error("User not found or invalid credentials");
+        alert("User not found or invalid credentials");
       }
     } catch (error) {
-      console.error("Error logging in:", error);
+      alert("Error logging in: " + error);
     }
   };
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const handleClickButton = async () => {
+    try {
+      const users = await fetchUsers();
+      const foundUser = users.find(
+        (user) => user.email === email && user.password === password
+      );
+      if (foundUser) {
+        handleLogin(foundUser);
+        alert("User logged in successfully: " + foundUser.name);
+        navigate(ROUTES.ORDERS);
+      } else {
+        alert("User not found or invalid credentials");
+      }
+    } catch (error) {
+      alert("Error logging in: " + error);
+    }
   };
 
   return (
@@ -78,7 +98,11 @@ const Login = () => {
             required
           />
           {passwordError && <div className={styles.error}>{passwordError}</div>}
-          <Button type="submit" className={styles.loginButton}>
+          <Button
+            type="submit"
+            className={styles.loginButton}
+            onClick={handleClickButton}
+          >
             Log In
           </Button>
         </form>

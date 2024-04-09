@@ -1,0 +1,13 @@
+.container {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.darkMode {
+  background-color: #222;
+  color: #fff;
+}
+
+.lightMode {
+  background-color: #f4f4f4;
+}
