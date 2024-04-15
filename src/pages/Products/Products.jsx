@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import { fetchProducts } from "../../api/products";
+import { useEffect, useState } from "react";
+
+import Button from "../../components/Button/Button";
+import Modal from "../../components/Modal/Modal";
 import { createProduct } from "../../api/products";
 import { deleteProduct } from "../../api/products";
+import { fetchProducts } from "../../api/products";
 import styles from "./Products.module.scss";
-import Modal from "../../components/Modal/Modal";
-import Button from "../../components/Button/Button";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -91,11 +92,11 @@ const Products = () => {
       {products.map((product) => (
         <div className={styles.productRow} key={product.id}>
           <div className={styles.columnItem}>
-            <span className={styles.image}>
+            <div className={styles.image}>
               <img src={product.image} alt={product.name} />
-            </span>
-            <span>{product.name}</span>
-            <span>{product.price}</span>
+            </div>
+            <div>{product.name}</div>
+            <div>{product.price}</div>
             <Button onClick={() => handleDelete(product.id)}>X</Button>
           </div>
         </div>

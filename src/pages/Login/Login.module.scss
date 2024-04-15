@@ -74,3 +74,29 @@ input::-webkit-input-placeholder {
   padding-bottom: 10px;
   text-align: center;
 }
+.registerButton {
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.registerButton:hover {
+  background-color: darkgreen;
+}
+.registerContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+}

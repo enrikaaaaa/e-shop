@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import { fetchOrderById } from "../../api/orders";
-import { fetchUserById } from "../../api/users";
-import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+
+import Button from "../../components/Button/Button";
+import { FaCalendarAlt } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
-import { FaCalendarAlt } from "react-icons/fa";
-import Button from "../../components/Button/Button";
+import PropTypes from "prop-types";
+import { fetchOrderById } from "../../api/orders";
+import { fetchUserById } from "../../api/users";
 import styles from "./Orders.module.scss";
 
 const OrderRow = ({ order, onEditOrder, onDeleteOrder }) => {
@@ -39,15 +40,15 @@ const OrderRow = ({ order, onEditOrder, onDeleteOrder }) => {
       <div className={styles.columnItem}>
         <div className={styles.iconItem}>
           <IoPerson className={styles.icon} />
-          <span>{customerName}</span>
+          <div>{customerName}</div>
         </div>
         <div className={styles.iconItem}>
           <FaCalendarAlt className={styles.icon} />
-          <span>{order.createDate}</span>
+          <div>{order.createDate}</div>
         </div>
         <div className={styles.iconItem}>
           <FaDollarSign className={styles.icon} />
-          <span>{totalPriceValue}</span>
+          <div>{totalPriceValue}</div>
         </div>
       </div>
       <div className={styles.actions}>

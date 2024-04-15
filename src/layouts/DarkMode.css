@@ -1,0 +1,33 @@
+.darkMode {
+  background-color: #222;
+  color: #fff;
+  div {
+    background-color: #222;
+  }
+  span,
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  button {
+    background-color: #333;
+    color: #fff;
+  }
+  table,
+  th,
+  td {
+    background-color: #333;
+  }
+
+  th {
+    color: #222;
+  }
+  input {
+    background-color: #333;
+    color: #fff;
+  }
+}
+
+.lightMode {
+  background-color: #f4f4f4;
+}

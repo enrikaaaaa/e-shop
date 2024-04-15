@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Input from "../../components/Input/Input";
+import { createUser, fetchUsers } from "../../api/users";
+
 import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
 import { ROUTES } from "../../routes/consts";
 import styles from "./Register.module.scss";
-import { fetchUsers, createUser } from "../../api/users";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -150,15 +151,6 @@ const Register = () => {
                   Register
                 </Button>
               </div>
-            </div>
-            <div className={`${styles.form} ${styles.registerContainer}`}>
-              <h5>Registered?</h5>
-              <Button
-                className={styles.registerButton}
-                onClick={() => navigate(ROUTES.LOGIN)}
-              >
-                Log In
-              </Button>
             </div>
           </div>
           {confirmPasswordError && (

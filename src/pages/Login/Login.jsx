@@ -105,6 +105,15 @@ const Login = () => {
           >
             Log In
           </Button>
+          <div className={`${styles.form} ${styles.registerContainer}`}>
+            <h5>Not registered?</h5>
+            <Button
+              className={styles.registerButton}
+              onClick={() => navigate(ROUTES.REGISTER)}
+            >
+              Register
+            </Button>
+          </div>
         </form>
       </div>
     </div>

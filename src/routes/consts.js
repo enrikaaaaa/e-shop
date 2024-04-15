@@ -1,16 +1,16 @@
-import Login from "../pages/Login/Login";
-import Register from "../pages/Register/Register";
-import Orders from "../pages/Orders/Orders";
-import Order from "../pages/Order/Order";
-import BasicLayout from "../layouts/BasicLayout";
 import AuthLayout from "../layouts/AuthLayout";
+import BasicLayout from "../layouts/BasicLayout";
+import Login from "../pages/Login/Login";
 import NewOrder from "../pages/Orders/NewOrderModal";
+import Order from "../pages/Order/Order";
+import Orders from "../pages/Orders/Orders";
 import Products from "../pages/Products/Products";
+import Register from "../pages/Register/Register";
 import Users from "../pages/Users/Users";
 
 export const ROUTES = {
-  REGISTER: "/",
-  LOGIN: "/login",
+  LOGIN: "/",
+  REGISTER: "/register",
   ORDERS: "/orders",
   ORDER: "/orders/:id",
   PRODUCTS: "/products",

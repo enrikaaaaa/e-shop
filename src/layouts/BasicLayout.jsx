@@ -1,19 +1,20 @@
 import "./BasicLayout.css";
+import "./DarkMode.css";
 
+import DarkModeToggleComponent from "../../src/components/DarkModeToggleComponent";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
 import PropTypes from "prop-types";
 import { ThemeContext } from "../contexts/ThemeContexts/ThemeContexts";
 import { useContext } from "react";
 
 const BasicLayout = ({ children }) => {
-  const { toggleDarkMode } = useContext(ThemeContext);
   const { darkMode } = useContext(ThemeContext);
+
   return (
     <>
-      <NavigationBar />
-
       <div className={`container ${darkMode ? "darkMode" : "lightMode"}`}>
-        <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
+        <DarkModeToggleComponent />
+        <NavigationBar />
         {children}
       </div>
     </>

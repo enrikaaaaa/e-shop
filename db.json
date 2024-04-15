@@ -104,6 +104,13 @@
       "age": "33",
       "email": "bronde@mail.com",
       "password": "asdfgh"
+    },
+    {
+      "id": "9140",
+      "name": "Ingridija",
+      "age": "55",
+      "email": "e.rudzikiene1@gmail.com",
+      "password": "Naujas.123"
     }
   ]
 }
