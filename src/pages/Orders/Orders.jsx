@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-import { fetchOrders, deleteOrder } from "../../api/orders";
-import { fetchUsers } from "../../api/users";
-import OrderRow from "../Orders/OrderRow";
-import Order from "../Order/Order";
-import styles from "./Orders.module.scss";
+import { deleteOrder, fetchOrders } from "../../api/orders";
+import { useEffect, useState } from "react";
+
 import Button from "../../components/Button/Button";
-import NewOrderModal from "./NewOrderModal";
 import { Link } from "react-router-dom";
+import NewOrderModal from "./NewOrderModal";
+import Order from "../Order/Order";
+import OrderRow from "../Orders/OrderRow";
+import { fetchUsers } from "../../api/users";
+import styles from "./Orders.module.scss";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
